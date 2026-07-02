@@ -2083,6 +2083,69 @@ main .splash-credit-outside {
   stroke: none !important;
 }
 
+
+.splash-time-grid-clean {
+  grid-template-columns: 90px 90px 52px !important;
+  align-items: center !important;
+}
+.splash-field-clean {
+  grid-template-rows: 50px !important;
+  gap: 0 !important;
+}
+.splash-field-label-clean {
+  display: none !important;
+}
+.splash-time-clean,
+.splash-save-clean {
+  align-self: center !important;
+}
+.bottom-actions-grid {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 12px !important;
+  align-items: stretch !important;
+  margin: 16px 0 0 !important;
+}
+.bottom-actions-grid .bottom-reset-button,
+.bottom-actions-grid .bottom-settings-button {
+  grid-column: auto !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  max-width: none !important;
+  height: 56px !important;
+  min-height: 56px !important;
+  max-height: 56px !important;
+  padding: 16px 18px !important;
+  border-radius: 18px !important;
+  background: var(--polimi-blue) !important;
+  color: #ffffff !important;
+  font-family: "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.14em !important;
+  line-height: normal !important;
+  text-transform: uppercase !important;
+  box-shadow: 0 12px 28px rgba(16, 44, 83, 0.20) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  aspect-ratio: auto !important;
+}
+.bottom-actions-grid .bottom-settings-button svg {
+  display: none !important;
+}
+@media (max-width: 360px) {
+  .bottom-actions-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 9px !important;
+  }
+  .bottom-actions-grid .bottom-reset-button,
+  .bottom-actions-grid .bottom-settings-button {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: none !important;
+  }
+}
 </style>
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
@@ -2568,17 +2631,14 @@ main .splash-credit-outside {
 
       <div class="splash-time-grid-clean">
         <div class="splash-field-clean">
-          <span class="splash-field-label-clean">Dalle</span>
-          <input id="splashInizioFascia" class="time-chip splash-time-clean" type="time" step="60" value="08:30">
+          <input id="splashInizioFascia" class="time-chip splash-time-clean" type="time" step="60" value="08:30" aria-label="Dalle">
         </div>
 
         <div class="splash-field-clean">
-          <span class="splash-field-label-clean">Alle</span>
-          <input id="splashFineFascia" class="time-chip splash-time-clean" type="time" step="60" value="09:30">
+          <input id="splashFineFascia" class="time-chip splash-time-clean" type="time" step="60" value="09:30" aria-label="Alle">
         </div>
 
         <div class="splash-field-clean">
-          <span class="splash-field-label-clean">Salva</span>
           <button id="splashSaveButton" class="splash-save-clean" type="button" aria-label="Salva fascia di ingresso">
 
 <svg class="disk-upload-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 237.63 237.92" aria-hidden="true" focusable="false">
@@ -2595,6 +2655,32 @@ main .splash-credit-outside {
 
     <div class="splash-credit-clean splash-credit-outside"><span>Progetto di</span><strong>Alessandro Mandelli</strong></div>
   </div>
+
+<style id="button-text-fix">
+.bottom-actions-grid .bottom-reset-button,
+.bottom-actions-grid .bottom-settings-button {
+  font-size: 12px !important;
+  line-height: 1.15 !important;
+  letter-spacing: 0.06em !important;
+  padding: 14px 10px !important;
+  white-space: nowrap !important;
+  text-align: center !important;
+  overflow: hidden !important;
+  text-overflow: clip !important;
+}
+.bottom-actions-grid .bottom-settings-button {
+  color: #ffffff !important;
+}
+@media (max-width: 360px) {
+  .bottom-actions-grid .bottom-reset-button,
+  .bottom-actions-grid .bottom-settings-button {
+    font-size: 11px !important;
+    letter-spacing: 0.035em !important;
+    padding-left: 7px !important;
+    padding-right: 7px !important;
+  }
+}
+</style>
 <main class="container">
     <header class="app-header" aria-label="Intestazione applicazione">
       <div class="app-header-row">
@@ -3365,20 +3451,28 @@ main .splash-credit-outside {
       white-space: nowrap;
     }
 
-.splash-save-clean svg.floppy-cut-icon,
-.bottom-actions-grid .bottom-settings-button svg.settings-line-icon {
+.splash-save-clean svg.floppy-cut-icon {
   width: 31px !important;
   height: 31px !important;
   aspect-ratio: 1 / 1 !important;
   display: block !important;
 }
 
+.bottom-actions-grid .bottom-settings-button svg.settings-line-icon {
+  display: none !important;
+}
+
 .bottom-actions-grid .bottom-settings-button {
-  font-size: 0 !important;
-  line-height: 0 !important;
   display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
+  text-align: center !important;
+  font-size: 12px !important;
+  line-height: 1.15 !important;
+  letter-spacing: 0.055em !important;
+  white-space: normal !important;
+  padding-left: 10px !important;
+  padding-right: 10px !important;
 }
 
 .bottom-actions-grid .bottom-settings-button svg.settings-line-icon path,
@@ -3619,11 +3713,7 @@ main .splash-credit-outside {
 
     <div class="bottom-actions-grid" aria-label="Azioni rapide">
       <button id="resetButton" class="reset-button bottom-reset-button" type="button">Reset</button>
-      <button id="settingsButton" class="settings-button bottom-settings-button" type="button" aria-controls="settingsPanel" aria-expanded="false" aria-label="Impostazioni">
-        <svg class="gear-upload-icon" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 233.78 246.91" aria-hidden="true" focusable="false">
-  <g id="SVGRepo_iconCarrier"> <path class="gear-icon-fill" d="M116.89,80.39c-23.78,0-43.07,19.28-43.07,43.07s19.28,43.07,43.07,43.07,43.07-19.28,43.07-43.07-19.28-43.07-43.07-43.07ZM91.05,123.46c0-14.27,11.57-25.84,25.84-25.84s25.84,11.57,25.84,25.84-11.57,25.84-25.84,25.84-25.84-11.57-25.84-25.84Z"/> <path class="gear-icon-fill" d="M116.6,0c-5.1,0-9.37,0-12.86.24-3.64.25-7.08.78-10.42,2.17-7.74,3.21-13.89,9.35-17.09,17.09-1.67,4.03-2.12,8.27-2.29,12.89-.14,3.71-2.01,6.81-4.77,8.4-2.76,1.6-6.38,1.67-9.66-.07-4.08-2.16-7.99-3.89-12.31-4.46-8.3-1.09-16.7,1.16-23.35,6.26-2.86,2.2-5.05,4.91-7.08,7.94-1.96,2.91-4.09,6.6-6.64,11.02l-.29.5c-2.55,4.42-4.68,8.11-6.23,11.26-1.61,3.28-2.86,6.52-3.33,10.1-1.09,8.3,1.16,16.7,6.26,23.35,2.65,3.46,6.1,5.97,10.01,8.43,3.14,1.98,4.89,5.14,4.89,8.34,0,3.19-1.74,6.36-4.89,8.34-3.91,2.46-7.36,4.97-10.02,8.43-5.1,6.64-7.35,15.04-6.26,23.35.47,3.58,1.73,6.83,3.33,10.1,1.54,3.15,3.67,6.84,6.23,11.26l.29.5c2.55,4.42,4.68,8.11,6.64,11.02,2.04,3.03,4.22,5.74,7.08,7.94,6.65,5.1,15.04,7.35,23.35,6.26,4.32-.57,8.23-2.3,12.31-4.46,3.28-1.74,6.9-1.66,9.66-.07,2.76,1.6,4.64,4.69,4.77,8.4.17,4.61.62,8.86,2.29,12.89,3.21,7.74,9.35,13.89,17.09,17.09,3.33,1.38,6.77,1.92,10.42,2.16,3.5.24,7.76.24,12.86.24h.58c5.1,0,9.37,0,12.86-.24,3.64-.25,7.08-.78,10.42-2.16,7.74-3.21,13.89-9.35,17.09-17.09,1.67-4.03,2.12-8.27,2.29-12.89.14-3.71,2.01-6.8,4.77-8.4,2.76-1.6,6.38-1.67,9.66.07,4.08,2.16,7.99,3.89,12.31,4.46,8.3,1.09,16.7-1.16,23.35-6.26,2.86-2.2,5.05-4.91,7.08-7.94,1.96-2.91,4.09-6.6,6.64-11.02l.29-.5c2.55-4.42,4.68-8.11,6.23-11.26,1.61-3.28,2.86-6.52,3.33-10.1,1.09-8.31-1.16-16.7-6.26-23.35-2.65-3.46-6.11-5.97-10.01-8.43-3.14-1.98-4.89-5.14-4.89-8.34s1.74-6.36,4.89-8.33c3.91-2.46,7.36-4.97,10.02-8.43,5.1-6.64,7.35-15.04,6.26-23.35-.47-3.58-1.73-6.83-3.33-10.1-1.54-3.15-3.67-6.84-6.23-11.26l-.29-.5c-2.55-4.42-4.68-8.11-6.64-11.02-2.04-3.03-4.22-5.74-7.08-7.94-6.64-5.1-15.04-7.35-23.35-6.26-4.32.57-8.23,2.3-12.31,4.46-3.28,1.73-6.9,1.66-9.66.07-2.76-1.6-4.64-4.69-4.78-8.4-.17-4.61-.62-8.86-2.29-12.89-3.21-7.74-9.35-13.89-17.09-17.09-3.34-1.38-6.77-1.92-10.42-2.17C126.54,0,122.28,0,117.18,0h-.58ZM99.91,18.32c.89-.37,2.23-.71,5-.89,2.84-.19,6.51-.2,11.98-.2s9.14,0,11.98.2c2.77.19,4.11.53,5,.89,3.52,1.46,6.31,4.25,7.77,7.77.46,1.11.84,2.84.99,6.94.34,9.1,5.04,17.86,13.38,22.68,8.34,4.81,18.28,4.5,26.33.25,3.63-1.92,5.32-2.45,6.51-2.61,3.77-.5,7.59.53,10.61,2.84.76.58,1.73,1.58,3.27,3.88,1.59,2.36,3.43,5.54,6.16,10.28,2.73,4.74,4.57,7.92,5.82,10.48,1.22,2.49,1.6,3.82,1.72,4.77.5,3.77-.53,7.59-2.84,10.61-.73.95-2.04,2.15-5.51,4.33-7.71,4.85-12.95,13.29-12.95,22.92,0,9.63,5.24,18.08,12.95,22.92,3.48,2.18,4.78,3.38,5.51,4.33,2.32,3.02,3.34,6.84,2.84,10.61-.13.95-.51,2.29-1.72,4.77-1.25,2.56-3.08,5.74-5.82,10.47-2.73,4.74-4.57,7.91-6.16,10.28-1.55,2.3-2.51,3.3-3.27,3.88-3.02,2.32-6.84,3.34-10.61,2.84-1.19-.16-2.88-.69-6.51-2.61-8.05-4.26-17.99-4.57-26.33.25-8.34,4.81-13.03,13.58-13.37,22.68-.15,4.1-.53,5.83-.99,6.94-1.46,3.52-4.25,6.31-7.77,7.77-.89.37-2.23.71-5,.89-2.84.19-6.51.2-11.98.2s-9.14,0-11.98-.2c-2.76-.19-4.11-.53-5-.89-3.52-1.46-6.31-4.25-7.77-7.77-.46-1.11-.84-2.84-.99-6.94-.34-9.1-5.04-17.86-13.38-22.68-8.34-4.81-18.27-4.5-26.33-.25-3.63,1.92-5.32,2.45-6.51,2.61-3.77.5-7.59-.53-10.61-2.84-.76-.58-1.73-1.58-3.27-3.88-1.59-2.36-3.43-5.54-6.16-10.28-2.73-4.74-4.57-7.92-5.82-10.47-1.22-2.49-1.6-3.82-1.72-4.78-.5-3.77.53-7.59,2.84-10.61.73-.95,2.04-2.15,5.51-4.33,7.71-4.84,12.95-13.29,12.95-22.92,0-9.63-5.24-18.08-12.95-22.92-3.47-2.18-4.78-3.38-5.51-4.33-2.32-3.02-3.34-6.84-2.84-10.61.13-.95.51-2.29,1.72-4.77,1.25-2.56,3.08-5.74,5.82-10.48,2.73-4.74,4.57-7.91,6.16-10.28,1.55-2.3,2.51-3.3,3.27-3.88,3.02-2.32,6.84-3.34,10.61-2.84,1.19.16,2.88.69,6.51,2.61,8.05,4.26,17.99,4.57,26.32-.25,8.34-4.81,13.03-13.58,13.38-22.68.15-4.1.53-5.83.99-6.94,1.46-3.52,4.25-6.31,7.77-7.77Z"/> </g>
-</svg>
-      </button>
+      <button id="settingsButton" class="reset-button bottom-settings-button" type="button" aria-controls="settingsPanel" aria-expanded="false">Fascia oraria</button>
     </div>
 
     <section id="settingsPanel" class="card settings-panel" aria-label="Impostazioni">
