@@ -1,4 +1,4 @@
-const CACHE_NAME = 'calcolo-timbratura-v7-fascia-text-visible';
+const CACHE_NAME = 'calcolo-timbratura-v8-dark-buttons';
 const ASSETS = [
   './',
   './index.html',

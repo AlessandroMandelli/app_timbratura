@@ -2681,6 +2681,31 @@ main .splash-credit-outside {
   }
 }
 </style>
+
+<style id="dark-actions-contrast-fix">
+.bottom-actions-grid .bottom-reset-button,
+.bottom-actions-grid .bottom-settings-button {
+  background: var(--polimi-blue-brand) !important;
+  color: #ffffff !important;
+  border: 0 !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+.bottom-actions-grid .bottom-reset-button:active,
+.bottom-actions-grid .bottom-settings-button:active {
+  background: var(--polimi-blue-brand) !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+@media (prefers-color-scheme: dark) {
+  .bottom-actions-grid .bottom-reset-button,
+  .bottom-actions-grid .bottom-settings-button {
+    background: var(--polimi-blue-brand) !important;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    box-shadow: 0 12px 28px rgba(16, 44, 83, 0.36) !important;
+  }
+}
+</style>
 <main class="container">
     <header class="app-header" aria-label="Intestazione applicazione">
       <div class="app-header-row">
