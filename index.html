@@ -2150,6 +2150,28 @@ main .splash-credit-outside {
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
   <link rel="apple-touch-icon" href="icons/icon-192.png">
+
+<style id="button-border-fix">
+.splash-save-clean,
+.bottom-actions-grid .bottom-reset-button,
+.bottom-actions-grid .bottom-settings-button {
+  border: 1px solid var(--border) !important;
+  box-shadow: 0 12px 28px rgba(16, 44, 83, 0.20), inset 0 1px 0 rgba(255, 255, 255, 0.28) !important;
+}
+.splash-save-clean:active,
+.bottom-actions-grid .bottom-reset-button:active,
+.bottom-actions-grid .bottom-settings-button:active {
+  border-color: var(--border) !important;
+}
+@media (prefers-color-scheme: dark) {
+  .splash-save-clean,
+  .bottom-actions-grid .bottom-reset-button,
+  .bottom-actions-grid .bottom-settings-button {
+    border: 1px solid rgba(255, 255, 255, 0.18) !important;
+    box-shadow: 0 12px 28px rgba(16, 44, 83, 0.36), inset 0 1px 0 rgba(255, 255, 255, 0.18) !important;
+  }
+}
+</style>
 </head>
 
 <body>
@@ -2703,6 +2725,28 @@ main .splash-credit-outside {
     color: #ffffff !important;
     -webkit-text-fill-color: #ffffff !important;
     box-shadow: 0 12px 28px rgba(16, 44, 83, 0.36) !important;
+  }
+}
+</style>
+
+<style id="button-border-final-fix">
+.splash-save-clean,
+.bottom-actions-grid .bottom-reset-button,
+.bottom-actions-grid .bottom-settings-button {
+  border: 1px solid rgba(255, 255, 255, 0.42) !important;
+  box-shadow: 0 12px 28px rgba(16, 44, 83, 0.20), inset 0 1px 0 rgba(255, 255, 255, 0.30) !important;
+}
+.splash-save-clean:active,
+.bottom-actions-grid .bottom-reset-button:active,
+.bottom-actions-grid .bottom-settings-button:active {
+  border-color: rgba(255, 255, 255, 0.54) !important;
+}
+@media (prefers-color-scheme: dark) {
+  .splash-save-clean,
+  .bottom-actions-grid .bottom-reset-button,
+  .bottom-actions-grid .bottom-settings-button {
+    border: 1px solid rgba(255, 255, 255, 0.24) !important;
+    box-shadow: 0 12px 28px rgba(16, 44, 83, 0.36), inset 0 1px 0 rgba(255, 255, 255, 0.18) !important;
   }
 }
 </style>
