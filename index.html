@@ -3819,9 +3819,11 @@ main .splash-credit-outside {
     ids.forEach(id => document.getElementById(id).addEventListener("input", () => { window.uscitaModificataManuale = false; calcola(); }));
 
     fineFascia.addEventListener("input", () => {
+      const inizio = minutiDaOra(inizioFascia.value);
       const fine = minutiDaOra(fineFascia.value);
-      inizioFascia.value = oraDaMinuti(fine - 60);
-      ultimoInizioFascia = minutiDaOra(inizioFascia.value);
+      if (fine < inizio) {
+        fineFascia.value = oraDaMinuti(inizio);
+      }
       allineaUscitaEffettivaAlMinimo();
     });
 
@@ -3835,12 +3837,16 @@ main .splash-credit-outside {
 
     inizioFascia.addEventListener("input", () => {
       const inizio = minutiDaOra(inizioFascia.value);
+      const fine = minutiDaOra(fineFascia.value);
 
       if (minutiDaOra(oraEntrata.value) === ultimoInizioFascia) {
         oraEntrata.value = oraDaMinuti(inizio);
       }
 
-      fineFascia.value = oraDaMinuti(inizio + 60);
+      if (fine < inizio) {
+        fineFascia.value = oraDaMinuti(inizio);
+      }
+
       ultimoInizioFascia = inizio;
 
       allineaUscitaEffettivaAlMinimo();
@@ -3951,19 +3957,20 @@ main .splash-credit-outside {
       const inizio = minutiDaOra(inizioFascia.value);
       let fine = minutiDaOra(fineFascia.value);
 
-      if (fine !== inizio + 60) {
-        fine = inizio + 60;
+      if (fine < inizio) {
+        fine = inizio;
         fineFascia.value = oraDaMinuti(fine);
       }
 
       let inizioPausa = minutiDaOra(uscitaPausa.value);
       let finePausa = minutiDaOra(rientroPausa.value);
 
-      const inizioMinimoConsentitoPausa = Math.max(ORA_MINIMA_PAUSA, entrata);
+      const inizioMinimoConsentitoPausa = entrata;
       if (inizioPausa < inizioMinimoConsentitoPausa) {
         uscitaPausa.value = oraDaMinuti(inizioMinimoConsentitoPausa);
         inizioPausa = inizioMinimoConsentitoPausa;
       }
+      const pausaPrimaDiMezzogiorno = inizioPausa < ORA_MINIMA_PAUSA;
 
       rientroPausa.removeAttribute("min");
 
@@ -4044,6 +4051,11 @@ main .splash-credit-outside {
         }
       } else {
         pausaCalcolata.textContent = "";
+      }
+
+      if (pausaPrimaDiMezzogiorno) {
+        const testo = "Attenzione, inizio pausa prima delle ore 12:00";
+        anomalie.push(testo);
       }
 
       if (durataRealePausa < MIN_PAUSA) {
@@ -4283,8 +4295,11 @@ main .splash-credit-outside {
       if (!splashInizio || !splashFine) return;
 
       const inizio = minutiDaOra(splashInizio.value);
-      const fine = inizio + 60;
-      splashFine.value = oraDaMinuti(fine);
+      let fine = minutiDaOra(splashFine.value);
+      if (fine < inizio) {
+        fine = inizio;
+        splashFine.value = oraDaMinuti(fine);
+      }
 
       inizioFascia.value = oraDaMinuti(inizio);
       fineFascia.value = oraDaMinuti(fine);
@@ -4305,11 +4320,19 @@ main .splash-credit-outside {
 
     if (splashInizioInput && splashFineInput) {
       splashInizioInput.addEventListener("input", () => {
-        splashFineInput.value = oraDaMinuti(minutiDaOra(splashInizioInput.value) + 60);
+        const inizio = minutiDaOra(splashInizioInput.value);
+        const fine = minutiDaOra(splashFineInput.value);
+        if (fine < inizio) {
+          splashFineInput.value = oraDaMinuti(inizio);
+        }
       });
 
       splashFineInput.addEventListener("input", () => {
-        splashInizioInput.value = oraDaMinuti(minutiDaOra(splashFineInput.value) - 60);
+        const inizio = minutiDaOra(splashInizioInput.value);
+        const fine = minutiDaOra(splashFineInput.value);
+        if (fine < inizio) {
+          splashFineInput.value = oraDaMinuti(inizio);
+        }
       });
     }
 
